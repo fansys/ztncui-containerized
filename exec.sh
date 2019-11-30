@@ -68,7 +68,9 @@ else
 fi
 
 if [ ! -z $ZT_PORT ]; then
-  echo "ZT_PORT=127.0.0.1:$ZT_PORT" >> /opt/key-networks/ztncui/.env
+  echo "ZT_ADDR=127.0.0.1:$ZT_PORT" >> /opt/key-networks/ztncui/.env
 fi
+
+chown ztncui.ztncui /opt/key-networks/ztncui/.env
 
 exec sudo -u ztncui /opt/key-networks/ztncui/ztncui
