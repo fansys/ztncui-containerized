@@ -40,6 +40,23 @@ if [ ! -z $ZT_ADDR ]; then
   echo -e "Your ZeroTier moon id is \033[0;31m$moon_id\033[0m, you could orbit moon using \033[0;31m\"zerotier-cli orbit $moon_id $moon_id\"\033[0m"
 fi
 
+# modify zerotier port
+if [ ! -z $ZT_PORT ]; then
+  if [ ! -f "/var/lib/zerotier-one/local.conf" ]; then
+	cat >> /var/lib/zerotier-one/local.conf <<EOF
+{
+  "settings": {
+    "primaryPort": $ZT_PORT
+  }
+}
+EOF
+    # restart zerotier-one
+    pkill zerotier-one
+    sleep 1
+    /usr/sbin/zerotier-one &
+  fi
+fi
+
 # set ztncui port
 cd /opt/key-networks/ztncui
 
