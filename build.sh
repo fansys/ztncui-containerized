@@ -131,4 +131,3 @@ yum install ztncui -y
 yum install sudo -y
 
 rm -f /var/lib/zerotier-one/authtoken.secret
-echo 'HTTPS_PORT=3443' > /opt/key-networks/ztncui/.env
