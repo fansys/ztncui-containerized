@@ -5,8 +5,8 @@ ADD VERSION .
 COPY build.sh /usr/bin/
 RUN build.sh
 
-EXPOSE 80/tcp
-EXPOSE 443/tcp
+EXPOSE 3000/tcp
+EXPOSE 3443/tcp
 
 COPY exec.sh /usr/sbin/
 ENTRYPOINT ["/usr/sbin/exec.sh"]
